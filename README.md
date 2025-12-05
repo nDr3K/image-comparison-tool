@@ -53,3 +53,7 @@ Example (encoded):
 - Uses Tailwind CSS for styling
 - No backend required - runs entirely in the browser
 - No data is stored or transmitted to any server
+
+## Live Demo
+
+You can try out the working demo of the Image Comparison Tool by visiting the deployed version at [https://nDr3K.github.io/image-comparison-tool](https://nDr3K.github.io/image-comparison-tool). This live demo allows you to interact with the tool and test its functionality directly in your browser.

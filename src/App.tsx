@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Image as ImageIcon, Link as LinkIcon } from 'lucide-react';
+import {useState, useEffect} from 'react';
+import {Image as ImageIcon, Link as LinkIcon} from 'lucide-react';
 import ImageComparison from './components/ImageComparison';
 import Toast from './components/Toast';
 
@@ -48,70 +48,72 @@ function App() {
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
-            Image Comparison Tool
-          </h1>
-          <p className="text-slate-400 text-lg">
-            Compare before and after images with a vertical slider
-          </p>
-        </div>
 
         {!hasImages ? (
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
-              <div className="flex items-center gap-3 mb-6">
-                <ImageIcon className="w-6 h-6 text-emerald-400" />
-                <h2 className="text-2xl font-semibold text-white">Get Started</h2>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Before Image URL
-                  </label>
-                  <input
-                    type="text"
-                    value={inputBefore}
-                    onChange={(e) => setInputBefore(e.target.value)}
-                    placeholder="https://example.com/before.jpg"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                  />
+          <>
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+                Image Comparison Tool
+              </h1>
+              <p className="text-slate-400 text-lg">
+                Compare before and after images with a vertical slider
+              </p>
+            </div>
+            <div className="max-w-2xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
+                <div className="flex items-center gap-3 mb-6">
+                  <ImageIcon className="w-6 h-6 text-emerald-400" />
+                  <h2 className="text-2xl font-semibold text-white">Get Started</h2>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    After Image URL
-                  </label>
-                  <input
-                    type="text"
-                    value={inputAfter}
-                    onChange={(e) => setInputAfter(e.target.value)}
-                    placeholder="https://example.com/after.jpg"
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                  />
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Before Image URL
+                    </label>
+                    <input
+                      type="text"
+                      value={inputBefore}
+                      onChange={(e) => setInputBefore(e.target.value)}
+                      placeholder="https://example.com/before.jpg"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      After Image URL
+                    </label>
+                    <input
+                      type="text"
+                      value={inputAfter}
+                      onChange={(e) => setInputAfter(e.target.value)}
+                      placeholder="https://example.com/after.jpg"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                    />
+                  </div>
+
+                  <button
+                    onClick={handleCompare}
+                    disabled={!inputBefore || !inputAfter}
+                    className="w-full py-3 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-emerald-500/30"
+                  >
+                    Compare Images
+                  </button>
                 </div>
 
-                <button
-                  onClick={handleCompare}
-                  disabled={!inputBefore || !inputAfter}
-                  className="w-full py-3 bg-linear-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-emerald-500/30"
-                >
-                  Compare Images
-                </button>
-              </div>
-
-              <div className="mt-6 p-4 bg-slate-900/50 rounded-lg border border-white/10">
-                <p className="text-sm text-slate-400">
-                  <span className="font-medium text-slate-300">Tip:</span> You can also share a
-                  direct link with image URLs like:
-                </p>
-                <code className="block mt-2 text-xs text-emerald-400 break-all">
-                  ?before=IMAGE_URL&after=IMAGE_URL
-                </code>
+                <div className="mt-6 p-4 bg-slate-900/50 rounded-lg border border-white/10">
+                  <p className="text-sm text-slate-400">
+                    <span className="font-medium text-slate-300">Tip:</span> You can also share a
+                    direct link with image URLs like:
+                  </p>
+                  <code className="block mt-2 text-xs text-emerald-400 break-all">
+                    ?before=IMAGE_URL&after=IMAGE_URL
+                  </code>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         ) : (
           <div className="space-y-6">
             <div className="flex flex-wrap gap-4 justify-center">
@@ -134,14 +136,8 @@ function App() {
               </button>
             </div>
 
-            <div className="max-w-6xl mx-auto" style={{ height: 'calc(100vh - 300px)' }}>
+            <div className="max-w-6xl mx-auto" style={{height: 'calc(100vh - 160px)'}}>
               <ImageComparison beforeImage={beforeImage} afterImage={afterImage} />
-            </div>
-
-            <div className="text-center">
-              <p className="text-slate-400 text-sm">
-                Drag the slider left or right to compare images
-              </p>
             </div>
 
           </div>
